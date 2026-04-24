@@ -1,0 +1,17 @@
+{
+  "name": "Integration - Invalid Input Returns Validation Error",
+  "description": "Ensures that submitting an invalid input (e.g., empty string) to /query returns a validation error and appropriate tips.",
+  "test_type": "integration",
+  "input": "POST /query with JSON body: {\"user_query\": \"   \"}",
+  "output": "JSON response with success=false, answer=null, error message, tips provided",
+  "success_criteria": [
+    "response.status_code == 200",
+    "response.json()['success'] is False",
+    "response.json()['answer'] is None",
+    "response.json()['error'] is not None",
+    "response.json()['tips'] is not None"
+  ],
+  "error_scenarios": [
+    "ValidationError raised by QueryRequest"
+  ]
+}
