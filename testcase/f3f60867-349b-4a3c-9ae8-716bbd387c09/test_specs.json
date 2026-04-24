@@ -1,0 +1,16 @@
+{
+  "name": "Functional - Query Not Found in Policy Returns Fallback",
+  "description": "Checks that when the user's query is not found in the policy documentation, the fallback response is returned.",
+  "test_type": "functional",
+  "input": "POST /query with JSON body: {\"user_query\": \"What is the cafeteria menu for next week?\"}",
+  "output": "JSON response with success=true, answer equals FALLBACK_RESPONSE, error=null, tips=null",
+  "success_criteria": [
+    "response.status_code == 200",
+    "response.json()['success'] is True",
+    "response.json()['answer'] == \"I'm sorry, I could not find information related to your query in the official XYZ finance policy documentation.\"",
+    "response.json()['error'] is None"
+  ],
+  "error_scenarios": [
+    "Azure AI Search returns no results"
+  ]
+}
