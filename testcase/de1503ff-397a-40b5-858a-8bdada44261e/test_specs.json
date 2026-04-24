@@ -1,0 +1,11 @@
+{
+  "name": "Security - No Sensitive Data Leakage",
+  "description": "Verifies that the agent does not leak credentials or sensitive config values in responses.",
+  "test_type": "security",
+  "input": "POST /query with a valid query and inspect all returned fields",
+  "output": "No sensitive config values (e.g., API keys) present in any response fields",
+  "success_criteria": [
+    "response does not contain any known sensitive config values"
+  ],
+  "error_scenarios": null
+}
