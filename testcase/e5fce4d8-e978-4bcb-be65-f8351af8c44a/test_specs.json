@@ -1,0 +1,17 @@
+{
+  "name": "Integration - Malformed JSON Returns 422",
+  "description": "Checks that submitting malformed JSON to /query returns a 422 error with appropriate error and tips.",
+  "test_type": "integration",
+  "input": "POST /query with malformed JSON body: {user_query: 'missing quotes'}",
+  "output": "JSON response with success=false, answer=null, error message, tips provided, status_code=422",
+  "success_criteria": [
+    "response.status_code == 422",
+    "response.json()['success'] is False",
+    "response.json()['answer'] is None",
+    "response.json()['error'] is not None",
+    "response.json()['tips'] is not None"
+  ],
+  "error_scenarios": [
+    "Pydantic ValidationError"
+  ]
+}
