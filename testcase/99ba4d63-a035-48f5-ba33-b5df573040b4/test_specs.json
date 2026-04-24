@@ -1,0 +1,14 @@
+{
+  "name": "Security - Content Safety Guardrails on Output",
+  "description": "Ensures that the with_content_safety decorator is invoked on LLM output and blocks unsafe responses.",
+  "test_type": "security",
+  "input": "Simulate LLMService.generate_response returning unsafe output (mock unsafe output)",
+  "output": "Error or blocked response due to content safety violation",
+  "success_criteria": [
+    "Content safety check is called on output",
+    "Unsafe output is blocked or sanitized"
+  ],
+  "error_scenarios": [
+    "Content safety check fails"
+  ]
+}
