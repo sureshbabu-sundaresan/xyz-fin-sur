@@ -1,0 +1,14 @@
+{
+  "name": "Security - Content Safety Guardrails on Input",
+  "description": "Ensures that the with_content_safety decorator is invoked and blocks queries with known unsafe content.",
+  "test_type": "security",
+  "input": "POST /query with JSON body: {\"user_query\": \"<unsafe input known to trigger guardrails>\"}",
+  "output": "JSON response with success=false or error message indicating content safety violation",
+  "success_criteria": [
+    "response.status_code == 200 or 400",
+    "response.json()['success'] is False or error indicates content safety violation"
+  ],
+  "error_scenarios": [
+    "Content safety check fails"
+  ]
+}
