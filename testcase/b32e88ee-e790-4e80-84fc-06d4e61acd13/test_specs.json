@@ -1,0 +1,16 @@
+{
+  "name": "Performance - High Load Multiple Queries",
+  "description": "Simulates multiple concurrent requests to /query to ensure the agent can handle load.",
+  "test_type": "performance",
+  "input": "Send 20 concurrent POST requests to /query with valid queries",
+  "output": "All responses are successful and within acceptable response time",
+  "success_criteria": [
+    "All responses.status_code == 200",
+    "All responses.json()['success'] is True",
+    "Average response time < 4000 ms"
+  ],
+  "error_scenarios": [
+    "Resource exhaustion",
+    "Rate limiting by external APIs"
+  ]
+}
