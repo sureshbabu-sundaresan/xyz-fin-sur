@@ -1,0 +1,18 @@
+{
+  "name": "Functional - Valid Query Returns Answer",
+  "description": "Validates that a well-formed user query about finance policy returns a successful answer via the /query endpoint.",
+  "test_type": "functional",
+  "input": "POST /query with JSON body: {\"user_query\": \"What is the reimbursement policy for travel expenses?\"}",
+  "output": "JSON response with success=true, answer containing relevant policy information, error=null, tips=null",
+  "success_criteria": [
+    "response.status_code == 200",
+    "response.json()['success'] is True",
+    "response.json()['answer'] is not None",
+    "response.json()['error'] is None",
+    "response.json()['tips'] is None"
+  ],
+  "error_scenarios": [
+    "Azure AI Search unavailable",
+    "OpenAI API unavailable"
+  ]
+}
