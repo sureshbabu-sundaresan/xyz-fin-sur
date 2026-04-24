@@ -1,0 +1,13 @@
+{
+  "name": "Performance - Chunk Retrieval Latency",
+  "description": "Measures the time taken by ChunkRetriever.retrieve_chunks for a typical query.",
+  "test_type": "performance",
+  "input": "Call ChunkRetriever.retrieve_chunks with a valid query and document_titles",
+  "output": "Time taken to retrieve chunks in milliseconds",
+  "success_criteria": [
+    "retrieve_chunks completes within 2000 ms"
+  ],
+  "error_scenarios": [
+    "Azure AI Search latency"
+  ]
+}
