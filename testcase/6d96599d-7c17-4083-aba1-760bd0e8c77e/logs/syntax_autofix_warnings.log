@@ -1,0 +1,2 @@
+Pre-pytest Syntax Auto-fix Warnings:
+  - test_agent.py: removed 1 stray trailing dot(s) after parentheses.
