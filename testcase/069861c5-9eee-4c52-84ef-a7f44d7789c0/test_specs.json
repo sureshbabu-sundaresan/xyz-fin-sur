@@ -1,0 +1,16 @@
+{
+  "name": "Integration - End-to-End Query Flow",
+  "description": "Tests the full workflow from receiving a query to returning an answer, including chunk retrieval and LLM response.",
+  "test_type": "integration",
+  "input": "POST /query with JSON body: {\"user_query\": \"What is the maximum allowed reimbursement for meals?\"}",
+  "output": "JSON response with success=true, answer containing relevant policy section, error=null, tips=null",
+  "success_criteria": [
+    "response.status_code == 200",
+    "response.json()['success'] is True",
+    "response.json()['answer'] contains 'reimbursement' or relevant policy text",
+    "response.json()['error'] is None"
+  ],
+  "error_scenarios": [
+    "Azure AI Search or OpenAI API returns error"
+  ]
+}
